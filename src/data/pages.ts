@@ -4,7 +4,7 @@ export interface ScrapPage {
   title?: string
   body: string
   date?: string
-  photos: { src: string; alt: string; rotate: number; zIndex: number; top?: string; left?: string; right?: string }[]
+  photos: { src: string; alt: string; rotate: number; zIndex: number; top?: string; bottom?: string; left?: string; right?: string }[]
   stickers: { emoji: string; top?: string; bottom?: string; left?: string; right?: string; rotate: number; size: number }[]
   tapes: { top?: string; bottom?: string; left?: string; right?: string; rotate: number; color: 'yellow' | 'pink' | 'blue' | 'mint' }[]
   accentColor: string
