@@ -11,6 +11,42 @@ import Page5 from './Page5'
 import Page6 from './Page6'
 import { pages } from '../data/pages'
 
+// Preload critical assets hook/component
+const AssetPreloader = () => {
+  useEffect(() => {
+    // Collect specific large image assets
+    const images = [
+      '/src/assets/pg1vagabundotbmama.webp',
+      '/src/assets/todoamordomundo.webp',
+      '/src/assets/tevivo.webp',
+      '/src/assets/amorsemmedida.webp',
+      '/src/assets/psiloveyou.webp',
+      '/src/assets/YebbasHeartbreak.png'
+    ]
+    const audios = [
+      '/src/assets/vagabundotbmama.mp3',
+      '/src/assets/todoamordomundo.mp3',
+      '/src/assets/tevivo.mp3',
+      '/src/assets/amorsemmedida.mp3',
+      '/src/assets/psiloveyou.mp3',
+      '/src/assets/YebbasHeartbreak.mp3'
+    ]
+
+    images.forEach(src => {
+      const img = new Image()
+      img.src = src
+    })
+
+    audios.forEach(src => {
+      const audio = new Audio()
+      audio.src = src
+      audio.preload = 'auto'
+    })
+  }, [])
+
+  return null
+}
+
 // Swiper CSS
 import 'swiper/css'
 import 'swiper/css/effect-creative'
@@ -39,7 +75,9 @@ export default function BookContainer() {
   }
 
   return (
-    <div className="w-screen h-dvh overflow-hidden relative" style={{ background: '#0d0b09' }}>
+    <div className="w-full h-full relative font-sans text-white overflow-hidden select-none bg-[#0d100d]">
+      <AssetPreloader />
+      {/* Background decoration */}
 
       {/* Ambient background glow */}
       <div
@@ -95,6 +133,13 @@ export default function BookContainer() {
       <Swiper
         modules={[EffectCreative, Pagination, A11y]}
         effect="creative"
+        pagination={{ clickable: true, dynamicBullets: true }}
+        className="w-full h-full"
+        onSlideChange={handleSlideChange}
+        preloadImages={true}
+        watchSlidesProgress={true}
+        allowTouchMove={true}
+        grabCursor={true}
         creativeEffect={{
           prev: {
             shadow: true,

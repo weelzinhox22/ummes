@@ -105,6 +105,19 @@ export default function SplashScreen({ onComplete }: Props) {
           </motion.button>
 
           {/* Footer hint */}
+          <div className="absolute bottom-32 flex flex-col items-center gap-2 pointer-events-none">
+            <motion.p
+              className="font-sans text-[11px] tracking-widest uppercase opacity-60 flex items-center gap-2"
+              style={{ color: '#fff' }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.6 }}
+              transition={{ delay: 2.2 }}
+            >
+              <span>Aumente o áudio para uma melhor experiência</span>
+              <span className="text-sm">🔊</span>
+            </motion.p>
+          </div>
+
           <motion.p
             className="absolute bottom-8 font-sans text-[10px] tracking-widest uppercase opacity-30"
             style={{ color: '#fff' }}
