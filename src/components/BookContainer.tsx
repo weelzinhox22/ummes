@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { EffectCreative, Pagination, A11y } from 'swiper/modules'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -133,13 +133,8 @@ export default function BookContainer() {
       <Swiper
         modules={[EffectCreative, Pagination, A11y]}
         effect="creative"
-        pagination={{ clickable: true, dynamicBullets: true }}
         className="w-full h-full"
-        onSlideChange={handleSlideChange}
-        preloadImages={true}
-        watchSlidesProgress={true}
-        allowTouchMove={true}
-        grabCursor={true}
+        speed={520}
         creativeEffect={{
           prev: {
             shadow: true,
@@ -153,15 +148,14 @@ export default function BookContainer() {
           },
         }}
         pagination={{
-          el: '.custom-pagination',
           clickable: true,
+          dynamicBullets: true
         }}
-        grabCursor
+        grabCursor={true}
         a11y={{ prevSlideMessage: 'Slide anterior', nextSlideMessage: 'Próximo slide' }}
         onSwiper={swiper => { swiperRef.current = swiper }}
         onSlideChange={handleSlideChange}
         style={{ width: '100%', height: '100%' }}
-        speed={520}
       >
         {pages.map((page, i) => (
           <SwiperSlide key={page.id}>
